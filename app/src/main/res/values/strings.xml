@@ -13,5 +13,12 @@
     <string name="app_de_colorimetr_a">App de Colorimetría</string>
     <string name="bienvenida">BIENVENID@</string>
     <string name="cargando_interfaz">Cargando interfaz</string>
-    <string name="detalle">Para sacar una foto pulse en Tomar Foto. El resultado se verá en la pantalla.</string>
+    <string name="detalle">Para sacar una foto pulse en Tomar Foto. El resultado se verá en la pantalla. Abajo podrá ver los colores dominantes.</string>
+    <string name="colores_predominantes">COLORES PREDOMINANTES</string>
+    <string name="vibrant">Vibrant</string>
+    <string name="light_vibrant">Light Vibrant</string>
+    <string name="muted">Muted</string>
+    <string name="dark_muted">Dark Muted</string>
+    <string name="dark_vibrant">Dark Vibrant</string>
+    <string name="light_muted">Light Muted</string>
 </resources>
