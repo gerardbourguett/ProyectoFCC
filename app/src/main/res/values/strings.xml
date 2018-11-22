@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">App Deteccion</string>
+    <string name="app_de_registro_de_colorimetria">App de Registro de Colorimetria</string>
+    <string name="bienvenid">Bienvenid@!</string>
+    <string name="toma_de_muestras">Toma de Muestras</string>
+    <string name="im_genes_a_capturar">Imágenes a Capturar</string>
+    <string name="imagen_1">Imagen 1</string>
+    <string name="imagen_2">Imagen 2</string>
+    <string name="imagen_3">Imagen 3</string>
+    <string name="imagen_4">Imagen 4</string>
+    <string name="todo">TODO</string>
+    <string name="tomar_foto">Tomar Foto</string>
+    <string name="app_de_colorimetr_a">App de Colorimetría</string>
+    <string name="bienvenida">BIENVENID@</string>
+    <string name="cargando_interfaz">Cargando interfaz</string>
+    <string name="detalle">Para sacar una foto pulse en Tomar Foto. El resultado se verá en la pantalla.</string>
+</resources>
