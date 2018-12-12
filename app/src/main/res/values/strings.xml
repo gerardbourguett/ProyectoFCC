@@ -21,4 +21,7 @@
     <string name="dark_muted">Dark Muted</string>
     <string name="dark_vibrant">Dark Vibrant</string>
     <string name="light_muted">Light Muted</string>
+    <string name="busqueda_galeria">Busqueda Galeria</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -1,139 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#ffAAAAAA"
+    tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ImageView android:id="@+id/imgImagen"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="15dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <TextView android:id="@+id/txtVibrant"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <TextView
-                android:id="@+id/textBienvenida"
-                android:layout_width="394dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
-                android:layout_marginBottom="35dp"
-                android:gravity="center"
-                android:text="@string/app_de_colorimetr_a"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:id="@+id/txtDarkVibrant"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="53dp"
-                android:layout_marginLeft="53dp"
-                android:layout_marginEnd="53dp"
-                android:layout_marginRight="53dp"
-                android:layout_marginBottom="40dp"
-                android:gravity="center"
-                android:text="@string/detalle"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/imageId"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textBienvenida" />
+    <TextView android:id="@+id/txtLightVibrant"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <ImageView
-                android:id="@+id/imageId"
-                android:layout_width="265dp"
-                android:layout_height="204dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginLeft="65dp"
-                android:layout_marginEnd="65dp"
-                android:layout_marginRight="65dp"
-                android:layout_marginBottom="39dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintBottom_toTopOf="@+id/tomarFoto"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <TextView android:id="@+id/txtMuted"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <Button
-                android:id="@+id/tomarFoto"
-                android:layout_width="296dp"
-                android:layout_height="51dp"
-                android:layout_marginStart="47dp"
-                android:layout_marginLeft="47dp"
-                android:layout_marginEnd="47dp"
-                android:layout_marginRight="47dp"
-                android:layout_marginBottom="55dp"
-                android:text="@string/tomar_foto"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageId" />
+    <TextView android:id="@+id/txtDarkMuted"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <TextView
-                android:id="@+id/tituloColor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/colores_predominantes"
-                android:textStyle="bold" />
+    <TextView android:id="@+id/txtLightMuted"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="30dp" />
 
-            <TextView
-                android:id="@+id/vibrant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/vibrant" />
-
-            <TextView
-                android:id="@+id/darkVibrant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/dark_vibrant" />
-
-            <TextView
-                android:id="@+id/lightVibrant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/light_vibrant" />
-
-            <TextView
-                android:id="@+id/muted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/muted" />
-
-            <TextView
-                android:id="@+id/darkMuted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/dark_muted" />
-
-            <TextView
-                android:id="@+id/lightMuted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/light_muted" />
-        </LinearLayout>
-    </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

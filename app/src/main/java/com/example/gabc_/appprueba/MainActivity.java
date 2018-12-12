@@ -1,85 +1,110 @@
 package com.example.gabc_.appprueba;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView img;
-    private TextView mVibrant;
-    private TextView mVibrantDark;
-    private TextView mVibrantLight;
-    private TextView mMuted;
-    private TextView mMutedDark;
-    private TextView mMutedLight;
+    private ImageView imgImagen;
+
+    private TextView txtVibrant;
+    private TextView txtDarkVibrant;
+    private TextView txtLightVibrant;
+
+    private TextView txtMuted;
+    private TextView txtDarkMuted;
+    private TextView txtLightMuted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mVibrant = (TextView) findViewById(R.id.vibrant);
-        mVibrantDark = (TextView) findViewById(R.id.darkVibrant);
-        mVibrantLight = (TextView) findViewById(R.id.lightVibrant);
-        mMuted = (TextView) findViewById(R.id.muted);
-        mMutedDark = (TextView) findViewById(R.id.darkMuted);
-        mMutedLight = (TextView) findViewById(R.id.lightMuted);
+        imgImagen = (ImageView)findViewById(R.id.imgImagen);
 
+        txtVibrant = (TextView)findViewById(R.id.txtVibrant);
+        txtDarkVibrant = (TextView)findViewById(R.id.txtDarkVibrant);
+        txtLightVibrant = (TextView)findViewById(R.id.txtLightVibrant);
 
-        Button btn = findViewById(R.id.tomarFoto);
-        img = findViewById(R.id.imageId);
+        txtMuted = (TextView)findViewById(R.id.txtMuted);
+        txtDarkMuted = (TextView)findViewById(R.id.txtDarkMuted);
+        txtLightMuted = (TextView)findViewById(R.id.txtLightMuted);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 0);
+        imgImagen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.flores_2));
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.flores_2);
+
+        Palette.from(bitmap).maximumColorCount(24).generate(new Palette.PaletteAsyncListener() {
+            public void onGenerated(Palette p) {
+
+                /*
+                //Opción 1: Acceso directo a los colores principales
+                txtVibrant.setBackgroundColor(p.getVibrantColor(Color.BLACK));
+                txtDarkVibrant.setBackgroundColor(p.getDarkVibrantColor(Color.BLACK));
+                txtLightVibrant.setBackgroundColor(p.getLightVibrantColor(Color.BLACK));
+                txtMuted.setBackgroundColor(p.getMutedColor(Color.BLACK));
+                txtDarkMuted.setBackgroundColor(p.getDarkMutedColor(Color.BLACK));
+                txtLightMuted.setBackgroundColor(p.getLightMutedColor(Color.BLACK));
+                */
+
+                //Opción 2: Acceso a los swatches pricipales completos
+                setTextViewSwatch(txtVibrant, p.getVibrantSwatch());
+                setTextViewSwatch(txtDarkVibrant, p.getDarkVibrantSwatch());
+                setTextViewSwatch(txtLightVibrant, p.getLightVibrantSwatch());
+                setTextViewSwatch(txtMuted, p.getMutedSwatch());
+                setTextViewSwatch(txtDarkMuted, p.getDarkMutedSwatch());
+                setTextViewSwatch(txtLightMuted, p.getLightMutedSwatch());
+
+                //Opción 3: Acceso a todos los swatches generados
+                for (Palette.Swatch sw : p.getSwatches()) {
+                    Log.i("Palette", "Color: #" + Integer.toHexString(sw.getRgb()) + " (" + sw.getPopulation() + " píxeles)");
+                }
             }
         });
-
-
     }
 
-    private void setViewSwatch(TextView view, Palette.Swatch swatch, final String title) {
-        if (swatch != null) {
-            // Set the background color of a layout based on the vibrant color
-            view.setBackgroundColor(swatch.getRgb());
-            view.setText(title);
-            view.setTextColor(swatch.getTitleTextColor());
+    private void setTextViewSwatch(TextView tview, Palette.Swatch swatch) {
+        if(swatch != null) {
+            tview.setBackgroundColor(swatch.getRgb());
+            tview.setTextColor(swatch.getBodyTextColor());
+            tview.setText("Pixeles: " + swatch.getPopulation());
+        }
+        else {
+            tview.setBackgroundColor(Color.BLACK);
+            tview.setTextColor(Color.WHITE);
+            tview.setText("(sin definir)");
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        if (bitmap != null) {
-            Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                @Override
-                public void onGenerated(Palette palette) {
-                    setViewSwatch(mVibrant, palette.getVibrantSwatch(), "Vibrant");
-                    setViewSwatch(mVibrantDark, palette.getDarkVibrantSwatch(), "Dark Vibrant");
-                    setViewSwatch(mVibrantLight, palette.getLightVibrantSwatch(), "Light Vibrant");
-                    setViewSwatch(mMuted, palette.getMutedSwatch(), "Muted");
-                    setViewSwatch(mMutedDark, palette.getDarkMutedSwatch(), "Dark Muted");
-                    setViewSwatch(mMutedLight, palette.getLightMutedSwatch(), "Light Muted");
-                }
-            });
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
-        img.setImageBitmap(bitmap);
+
+        return super.onOptionsItemSelected(item);
     }
 }
